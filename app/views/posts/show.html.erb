@@ -6,6 +6,19 @@
       <%= link_to "Edit Post", edit_post_path(@post) %>
       <%= link_to "Delete Post", @post, method: :delete %>
     </div>
+    
+    <% if @post.asset.present? %>
+      <h3>Attached File</h3>
+      <div id="asset">
+        <p>
+          <%= link_to File.basename(@post.asset.path),
+                       @post.asset.url %>
+        </p>
+        <p><small><%= number_to_human_size(@post.asset.size) %>
+         </small></p>
+      </div>
+<% end %>
+
     <div id="author">
       <p>By: <%= @post.author %></p>
       <p><%= @post.created_at.to_s(:short) %></p>

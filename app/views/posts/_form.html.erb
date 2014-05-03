@@ -10,5 +10,9 @@
 <div class="form-group">
   Author: <%= @post.user.username %>
 </div>
+<p>
+  <%= f.label :asset, "File" %><br>
+  <%= f.file_field :asset %>
+</p>
 <%= f.submit "Save", class: "btn btn-default" %>
 <% end %>
