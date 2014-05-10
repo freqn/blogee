@@ -21,6 +21,20 @@
               <div class="col-md-8-col-md-offset-2 brand">
 		<h1><a class="navbar-brand" href="/">Blogee</a></h1>
 	      </div>
+        <div class="col-md-12">
+          <% if current_user %>
+          <p>
+            <%= link_to "New Post", new_post_path %>
+          </p>
+          <p>
+            <%= link_to "Sign out", signout_path %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to "Sign in", signin_path %>
+          </p>
+          <% end %>
+        </div>
 	    </div>
 	  </div>
 	</div>
