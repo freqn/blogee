@@ -18,4 +18,17 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    if session[:user_id].nil?
+      flash[:error] = "You need to sign in."
+      redirect_to root_url
+    else
+      session[:user_id] = nil
+      flash[:notice] = "Successfully signed out."
+      redirect_to root_url
+    end
+  end
+
+
 end

@@ -14,5 +14,11 @@
   <%= f.label :asset, "File" %><br>
   <%= f.file_field :asset %>
 </p>
+
+<div class="form-group">
+  <%= f.label :tag_names %>
+  <%= f.text_field :tag_names, class: "form-control" %>
+</div>
+
 <%= f.submit "Save", class: "btn btn-default" %>
 <% end %>

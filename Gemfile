@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.5'
 gem 'carrierwave'
+gem 'haml'
 
 group :development, :test do
   gem 'spring'
@@ -27,4 +28,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem "nyan-cat-formatter"
 end

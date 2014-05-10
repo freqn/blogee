@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "/signin", to: "sessions#new"
   post "/signin", to: "sessions#create"
+  get "/signout", to: "sessions#destroy"
 
   root to: "posts#index"
   # The priority is based upon order of creation: first created -> highest priority.
