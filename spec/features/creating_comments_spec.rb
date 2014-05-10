@@ -1,7 +1,9 @@
 require 'spec_helper'
 
+
 feature "Creating Comments" do
   before do
+    ActionMailer::Base.deliveries.clear
     @post = FactoryGirl.create(:post, user: FactoryGirl.create(:user))
     visit post_path(@post)
     click_link "Add Comment"
@@ -10,9 +12,15 @@ feature "Creating Comments" do
   scenario "with valid attributes" do
     fill_in "Author", with: "Anonymous Internet User"
     fill_in "Content", with: "You're wrong! This is the Internet - whatever you say is wrong."
+
     click_button "Add Comment"
+
     expect(current_path).to eq post_path(@post)
     expect(page).to have_content("Comment has been saved.")
+
+    email = find_email!(@post.user.email)
+    subject = "[blogee] #{@post.title} - Commment by #{@post.author}"
+    email.subject.should include(subject)
   end
 
   scenario "must have content longer than 15 characters" do

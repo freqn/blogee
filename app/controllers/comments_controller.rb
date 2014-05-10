@@ -9,8 +9,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.build(comment_params)
     if @comment.save
-      flash[:notice] = "Comment has been saved."
       redirect_to @post
+      Notifier.comment_updated(@comment, @post.user).deliver
+      flash[:notice] = "Comment has been saved."
+
     else
       flash[:alert] = "Comment has not been saved."
       render "new"
